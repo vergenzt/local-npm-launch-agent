@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+
 # Creates a LaunchAgent for local-npm, or does nothing
 # if it's already installed.
 
-import os, sys, getpass, commands
+import os, sys, getpass, subprocess
 
 def command(cmd):
   print(cmd)
@@ -57,10 +59,10 @@ plist = '''<?xml version="1.0" encoding="UTF-8"?>
 </plist>'''
 
 plist = plist % (\
-  commands.getoutput('which node'), \
-  commands.getoutput('which pm2'), \
-  commands.getoutput('which node'), \
-  commands.getoutput('which local-npm'), \
+  subprocess.check_output('which node').strip(), \
+  subprocess.check_output('which pm2').strip(), \
+  subprocess.check_output('which node').strip(), \
+  subprocess.check_output('which local-npm').strip(), \
   getpass.getuser(), \
   install_dir)
   
