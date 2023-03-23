@@ -59,10 +59,10 @@ plist = '''<?xml version="1.0" encoding="UTF-8"?>
 </plist>'''
 
 plist = plist % (\
-  subprocess.check_output('which node').strip(), \
-  subprocess.check_output('which pm2').strip(), \
-  subprocess.check_output('which node').strip(), \
-  subprocess.check_output('which local-npm').strip(), \
+  subprocess.check_output(['which', 'node']).strip(), \
+  subprocess.check_output(['which', 'pm2']).strip(), \
+  subprocess.check_output(['which', 'node']).strip(), \
+  subprocess.check_output(['which', 'local-npm']).strip(), \
   getpass.getuser(), \
   install_dir)
   
