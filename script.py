@@ -6,13 +6,13 @@
 import os, sys, getpass, commands
 
 def command(cmd):
-  print cmd
+  print(cmd)
   os.system(cmd)
 
 def finished():
-  print "\nIf you want to switch back to normal npm, run:\n\n    npmrc default\n"
-  print "If you want to see replication progress, run:\n\n    pm2 logs all\n"
-  print "If you want to uninstall, run:\n\n    launchctl unload ~/Library/LaunchAgents/com.nolanlawson.localnpm.plist\n"
+  print("\nIf you want to switch back to normal npm, run:\n\n    npmrc default\n")
+  print("If you want to see replication progress, run:\n\n    pm2 logs all\n")
+  print("If you want to uninstall, run:\n\n    launchctl unload ~/Library/LaunchAgents/com.nolanlawson.localnpm.plist\n")
 
 install_dir = os.path.expanduser('~/.local-npm')
 if not os.path.exists(install_dir):
@@ -20,7 +20,7 @@ if not os.path.exists(install_dir):
 
 done_file = os.path.join(install_dir, 'done')
 if os.path.exists(done_file):
-  print "\nLooks like local-npm is already installed! Exiting."
+  print("\nLooks like local-npm is already installed! Exiting.")
   finished()
   sys.exit(1)
 
@@ -75,7 +75,7 @@ os.system('npm set registry http://127.0.0.1:5080')
 
 open(done_file, 'a').close()
 
-print "\nDone! You now have local-npm running at 127.0.0.1:5080"
-print "You also have an npmrc called \"local\" configured to point to it."
-print "All offline data is stored in ~/.local-npm"
+print("\nDone! You now have local-npm running at 127.0.0.1:5080")
+print("You also have an npmrc called \"local\" configured to point to it.")
+print("All offline data is stored in ~/.local-npm")
 finished()
